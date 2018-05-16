@@ -57,7 +57,7 @@ Fields and methods are the class **members**.
 
 * Static fields are singletons - allow **only one instance** of themselves to be created - and give simple, easy access to said instance.
 
-* A static function, unlike a regular (instance) function, is not associated with an instance of the class. ** *No instantiation of some object is required in order to use a static method.* **
+* A static function, unlike a regular (instance) function, is not associated with an instance of the class. ***No instantiation of some object is required in order to use a static method.***
 
 * A static class is a class which can only contain static members, and therefore **cannot be instantiated.**
 
@@ -69,7 +69,7 @@ Fields and methods are the class **members**.
 
 * **Create constructors when there is a need to initialize some object in an early state**. A typical use case is to avoid **null reference exceptions**, when calling reference types in the program.  For example, the best practice for the initialization of a *List* member of some class, is to have it implemented with a constructor in the class, instead of creating a new *List* object in the main program where a class instance is used.
 
-** *As a best practice, anytime your class contains a list, always initialize the list.* **
+***As a best practice, anytime your class contains a list, always initialize the list.***
 
 * The **default** constructor is created by the C# compiler if not declared.
 
@@ -85,7 +85,7 @@ If not defined, the **default values** for various types are set by the compiler
 
 * Overload constructors by defining multiple signatures.
 
-* If we provide any constructors with parameters, then the compiler **does not** create the default (parameter-less) constructor automatically.* **If we want to be able to create objects without setting values for parameters, we need to define manually the default parameter-less constructor.** *
+* If we provide any constructors with parameters, then the compiler **does not** create the default (parameter-less) constructor automatically. ***If we want to be able to create objects without setting values for parameters, we need to define manually the default parameter-less constructor.***
 
 
 
@@ -614,4 +614,22 @@ and videos make such a false claim.
 
 - With inheritance, we write code once and re-use it without the need to type all that code again.
 
-- With interfaces, we simply declare the members the implementing class should contain. Then we need to type all that declaration along with the actual implementation in that class. So, code is not inherited, even the declaration of the members!
+- With interfaces, we simply declare the members the implementing class should contain. Then we need to type all that declaration along with the actual implementation in that class. So, code is not inherited, and even the declaration of the members has to be repeated in the implementation of the interface in the class!
+
+* Code reusability is not related to the concept of interfaces. Interfaces are instead contracts that classes conform to.
+
+* The misconception is due to the similar syntax with the colon usage in the class declaration, either for inheritance from a base class `: SomeBaseClass`, or for implementing an interface ` : ISomeInterface`. But **it is fundamentally wrong** to say that a class **inherits from** an interface. A class **implements** one or more interfaces.
+
+
+### Interfaces and open/closed principle
+
+* In object-oriented programming, the **open/closed principle (OCP)** states that *"software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification"* that is, such an entity can allow its behavior to be extended without modifying its source code.
+
+* The use of interfaces in a program promotes the implementation of the open/closed principle.
+
+
+### Interfaces and Polymorphism
+
+* Interfaces can be used in order to provide polymorphic behavior to a program.
+
+* Different classes may implement the same interface method. Then different versions of this method can be called at runtime. These versions match the various method implementations described in the class bodies of the different objects that call the method.  
